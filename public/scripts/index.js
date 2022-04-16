@@ -111,15 +111,22 @@ const setupUI = (user) => {
       // console.log("0n")
       // OUT_TEXT.innerText = 'Chế độ tự động';
       // };
-  
+        document.getElementById('onBtn').addEventListener('click', () => {
+          State.set('ON')
+          console.log("0n")
+          OUT_TEXT.innerText = 'Chế độ tự động';
+        });
+        document.getElementById('offBtn').addEventListener('click', () => {
+          State.set('OFF')
+          OUT_TEXT.innerText = 'Chế độ bằng tay';
+          console.log("0ff")
+        });
     
       // off.onClick =  () =>{
       // State.set('OFF')
       // OUT_TEXT.innerText = 'Chế độ bằng tay';
       // console.log("0ff")
       // };
-  
-
     // Update database with new range (input field)
     chartsRangeInputElement.onchange = () =>{
       chartRef.set(chartsRangeInputElement.value);
