@@ -82,7 +82,7 @@ const setupUI = (user) => {
     // Get number of readings to plot saved on database (runs when the page first loads and whenever there's a change in the database)
     chartRef.on('value', snapshot =>{
       chartRange = Number(snapshot.val());
-      console.log(chartRange);
+      console.log('hiển thị'+ chartRange);
       // Delete all data from charts to update with new values when a new range is selected
       chartT.destroy();
       chartH.destroy();
