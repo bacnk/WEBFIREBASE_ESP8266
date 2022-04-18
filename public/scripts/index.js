@@ -71,11 +71,11 @@ const setupUI = (user) => {
     // Database paths (with user UID)
     var dbPath = 'UsersData/' + uid.toString() + '/readings';
     var chartPath = 'UsersData/' + uid.toString() + '/charts/range';
-    var changeState =  'UsersData/' + uid.toString() + 'charts/state';
+    var changeState =  'UsersData/' + uid.toString() + '/set/state';
     // Database references
     var dbRef = firebase.database().ref(dbPath);
     var chartRef = firebase.database().ref(chartPath);
-    var State = firebase.database().ref(changeState);
+    var state = firebase.database().ref(changeState);
     // CHARTS
     // Number of readings to plot on charts
     var chartRange = 0;
@@ -112,12 +112,14 @@ const setupUI = (user) => {
       // OUT_TEXT.innerText = 'Chế độ tự động';
       // };
         document.getElementById('onBtn').addEventListener('click', () => {
-          State.set('ON')
+          state.set('on')
+          ledStatus = 1;
           console.log("0n")
           OUT_TEXT.innerText = 'Chế độ tự động';
         });
         document.getElementById('offBtn').addEventListener('click', () => {
-          State.set('OFF')
+          state.set('off')
+          ledStatus = 0;
           OUT_TEXT.innerText = 'Chế độ bằng tay';
           console.log("0ff")
         });
