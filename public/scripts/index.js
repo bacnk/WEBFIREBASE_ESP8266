@@ -71,7 +71,7 @@ const setupUI = (user) => {
     // Database paths (with user UID)
     var dbPath = 'UsersData/' + uid.toString() + '/readings';
     var chartPath = 'UsersData/' + uid.toString() + '/charts/range';
-    var changeState =  'UsersData/' + uid.toString() + '/set/state';
+    var changeState =  'UsersData/' + uid.toString() + '/readings/state';
     // Database references
     var dbRef = firebase.database().ref(dbPath);
     var chartRef = firebase.database().ref(chartPath);
