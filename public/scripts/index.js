@@ -71,7 +71,7 @@ const setupUI = (user) => {
     // Database paths (with user UID)
     var dbPath = 'UsersData/' + uid.toString() + '/readings';
     var chartPath = 'UsersData/' + uid.toString() + '/charts/range';
-    var changeState =  'UsersData/' + uid.toString() + '/readings/state';
+    var changeState =  'UsersData/' + uid.toString() + '/set/state';
     // Database references
     var dbRef = firebase.database().ref(dbPath);
     var chartRef = firebase.database().ref(chartPath);
@@ -121,6 +121,18 @@ const setupUI = (user) => {
           state.set('off')
           ledStatus = 0;
           OUT_TEXT.innerText = 'Chế độ bằng tay';
+          console.log("0ff")
+        });
+        document.getElementById('onBtn1').addEventListener('click', () => {
+          state1.set('on')
+          ledStatus = 1;
+          OUT_TEXT1.innerText = 'Bật đảo gió';
+          console.log("0ff")
+        });
+        document.getElementById('offBtn1').addEventListener('click', () => {
+          state.set('off')
+          ledStatus = 0;
+          OUT_TEXT1.innerText = 'Tắt đảo gió';
           console.log("0ff")
         });
     
