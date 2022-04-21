@@ -72,17 +72,19 @@ const setupUI = (user) => {
     var dbPath = 'UsersData/' + uid.toString() + '/readings';
     var chartPath = 'UsersData/' + uid.toString() + '/charts/range';
     var changeState =  'UsersData/' + uid.toString() + '/set/state';
+    var changeState1 =  'UsersData/' + uid.toString() + '/set/state1';
     // Database references
     var dbRef = firebase.database().ref(dbPath);
     var chartRef = firebase.database().ref(chartPath);
     var state = firebase.database().ref(changeState);
+    var state1 = firebase.database().ref(changeState1);
     // CHARTS
     // Number of readings to plot on charts
     var chartRange = 0;
     // Get number of readings to plot saved on database (runs when the page first loads and whenever there's a change in the database)
     chartRef.on('value', snapshot =>{
       chartRange = Number(snapshot.val());
-      console.log(chartRange);
+      console.log('hiển thị'+ chartRange);
       // Delete all data from charts to update with new values when a new range is selected
       chartT.destroy();
       chartH.destroy();
@@ -130,7 +132,7 @@ const setupUI = (user) => {
           console.log("0ff")
         });
         document.getElementById('offBtn1').addEventListener('click', () => {
-          state.set('off')
+          state1.set('off')
           ledStatus = 0;
           OUT_TEXT1.innerText = 'Tắt đảo gió';
           console.log("0ff")
