@@ -283,7 +283,7 @@ const setupUI = (user) => {
               var temperature = element.temperature;
               var humidity = element.humidity;
               var output1 = element.Time1;
-              var output1 = element.Time2;
+              var output2 = element.Time2;
               var timestamp = element.timestamp;
               var content = '';
               content += '<tr>';
