@@ -51,7 +51,9 @@ const gaugesReadingsElement = document.querySelector("#gauges-div");
 const chartsDivElement = document.querySelector('#charts-div');
 const tempElement = document.getElementById("temp");
 const humElement = document.getElementById("hum");
-const presElement = document.getElementById("pres");
+const output1Element = document.getElementById("output1");
+const output2Element = document.getElementById("output2");
+
 const updateElement = document.getElementById("lastUpdate")
 
 // MANAGE LOGIN/LOGOUT UI
@@ -88,10 +90,14 @@ const setupUI = (user) => {
       // Delete all data from charts to update with new values when a new range is selected
       chartT.destroy();
       chartH.destroy();
+      chartT1.destroy();
+      chartT2.destroy();
       // chartP.destroy();
       // Render new charts to display new range of data
       chartT = createTemperatureChart();
       chartH = createHumidityChart();
+      chartT1 = createoutput1();
+      chartT2 = createoutput2();
       // chartP = createPressureChart();
       // Update the charts with the new range
       // Get the latest readings and plot them on charts (the number of plotted readings corresponds to the chartRange value)
@@ -100,11 +106,15 @@ const setupUI = (user) => {
         // Save values on variables
         var temperature = jsonData.temperature;
         var humidity = jsonData.humidity;
+        var output1 = jsonData.Time1;
+        var output2 = jsonData.Time2;
         // var pressure = jsonData.pressure;
         var timestamp = jsonData.timestamp;
         // Plot the values on the charts
         plotValues(chartT, timestamp, temperature);
         plotValues(chartH, timestamp, humidity);
+        plotValues(chartT1, timestamp, output1);
+        plotValues(chartT2, timestamp, output2);
         // plotValues(chartP, timestamp, pressure);
       });
     });
@@ -171,12 +181,14 @@ const setupUI = (user) => {
       var jsonData = snapshot.toJSON(); // example: {temperature: 25.02, humidity: 50.20, pressure: 1008.48, timestamp:1641317355}
       var temperature = jsonData.temperature;
       var humidity = jsonData.humidity;
-      
+      var output1 = jsonData.Time1;
+      var output2 = jsonData.Time2;
       var timestamp = jsonData.timestamp;
       // Update DOM elements
       tempElement.innerHTML = temperature;
       humElement.innerHTML = humidity;
-
+      output1Element.innerHTML = output1;
+      output2Element.innerHTML = output2;
       updateElement.innerHTML = epochToDateTime(timestamp);
     });
 
@@ -224,14 +236,16 @@ const setupUI = (user) => {
           console.log(jsonData);
           var temperature = jsonData.temperature;
           var humidity = jsonData.humidity;
-          // var pressure = jsonData.pressure;
+          var output1 = jsonData.Time1;
+          var output2 = jsonData.Time2;
           var timestamp = jsonData.timestamp;
           var content = '';
           content += '<tr>';
           content += '<td>' + epochToDateTime(timestamp) + '</td>';
           content += '<td>' + temperature + '</td>';
           content += '<td>' + humidity + '</td>';
-          // content += '<td>' + pressure + '</td>';
+          content += '<td>' + output1 + '</td>';
+          content += '<td>' + output2 + '</td>';
           content += '</tr>';
           $('#tbody').prepend(content);
           // Save lastReadingTimestamp --> corresponds to the first timestamp on the returned snapshot data
@@ -268,14 +282,16 @@ const setupUI = (user) => {
             else{
               var temperature = element.temperature;
               var humidity = element.humidity;
-              // var pressure = element.pressure;
+              var output1 = element.Time1;
+              var output1 = element.Time2;
               var timestamp = element.timestamp;
               var content = '';
               content += '<tr>';
               content += '<td>' + epochToDateTime(timestamp) + '</td>';
               content += '<td>' + temperature + '</td>';
               content += '<td>' + humidity + '</td>';
-              // content += '<td>' + pressure + '</td>';
+              content += '<td>' + output1 + '</td>';
+              content += '<td>' + output2 + '</td>';
               content += '</tr>';
               $('#tbody').append(content);
             }

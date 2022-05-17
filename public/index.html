@@ -100,10 +100,14 @@
             <p><span class="reading"><span id="hum"></span> &percnt;</span></p>
           </div>
           <!--PRESSURE-->
-          <!-- <div class="card">
-            <p><i class="fas fa-angle-double-down" style="color:#e1e437;"></i> PRESSURE</p>
-            <p><span class="reading"><span id="pres"></span> hPa</span></p>
-          </div> -->
+          <div class="card">
+            <p><i class="fas fa-angle-double-down" style="color:#e1e437;"></i> OUTPUT1</p>
+            <p><span class="reading"><span id="output1"></span> s</span></p>
+          </div>
+          <div class="card">
+            <p><i class="fas fa-angle-double-down" style="color:#e1e437;"></i> OUTPUT2</p>
+            <p><span class="reading"><span id="output2"></span> s</span></p>
+          </div>
         </div>
       </div>
       <!--GAUGES-->
@@ -138,6 +142,18 @@
           <div class="card">
             <p><i class="fas fa-tint" style="color:#00add6;"></i> HUMIDITY CHART</p>
             <div id="chart-humidity" class="chart-container"></div>
+          </div>
+        </div> 
+        <div class="cards">
+          <div class="card">
+            <p><i class="fas fa-tint" style="color:#00add6;"></i> OUTPUT1</p>
+            <div id="ouputfan" class="chart-container"></div>
+          </div>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <p><i class="fas fa-tint" style="color:#00add6;"></i> OUTPUT2</p>
+            <div id="ouputpump" class="chart-container"></div>
           </div>
         </div>
  
@@ -175,6 +191,8 @@
               <th>Timestamp</th>
               <th>Temp (ºC)</th>
               <th>Hum (%)</th>
+              <th>OUTPUT1 (s)</th>
+              <th>OUTPUT2 (s)</th>
               
             </tr>
             <tbody id="tbody">
